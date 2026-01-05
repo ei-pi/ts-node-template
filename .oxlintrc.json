@@ -1,0 +1,436 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "unicorn",
+    "typescript",
+    "oxc",
+    "import",
+    "jsdoc",
+    "promise"
+  ],
+  "categories": {},
+  "rules": {
+    // #region Default OxLint rules
+    "constructor-super": "warn",
+    "for-direction": "warn",
+    "no-async-promise-executor": "warn",
+    "no-caller": "warn",
+    "no-class-assign": "warn",
+    "no-compare-neg-zero": "warn",
+    "no-cond-assign": "warn",
+    "no-const-assign": "warn",
+    "no-constant-binary-expression": "warn",
+    "no-constant-condition": "warn",
+    "no-control-regex": "warn",
+    "no-debugger": "warn",
+    "no-delete-var": "warn",
+    "no-dupe-class-members": "warn",
+    "no-dupe-else-if": "warn",
+    "no-dupe-keys": "warn",
+    "no-duplicate-case": "warn",
+    "no-empty-character-class": "warn",
+    "no-empty-pattern": "warn",
+    "no-empty-static-block": "warn",
+    "no-eval": "warn",
+    "no-ex-assign": "warn",
+    "no-extra-boolean-cast": "warn",
+    "no-func-assign": "warn",
+    "no-global-assign": "warn",
+    "no-import-assign": "warn",
+    "no-invalid-regexp": "warn",
+    "no-irregular-whitespace": "warn",
+    "no-loss-of-precision": "warn",
+    "no-new-native-nonconstructor": "warn",
+    "no-nonoctal-decimal-escape": "warn",
+    "no-obj-calls": "warn",
+    "no-self-assign": "warn",
+    "no-setter-return": "warn",
+    "no-shadow-restricted-names": "warn",
+    "no-sparse-arrays": "warn",
+    "no-this-before-super": "warn",
+    "no-unassigned-vars": "warn",
+    "no-unsafe-finally": "warn",
+    "no-unsafe-negation": "warn",
+    "no-unsafe-optional-chaining": "warn",
+    "no-unused-expressions": "warn",
+    "no-unused-private-class-members": "warn",
+    "no-unused-vars": "warn",
+    "no-useless-backreference": "warn",
+    "no-useless-catch": "warn",
+    "no-useless-escape": "warn",
+    "no-useless-rename": "warn",
+    "no-with": "warn",
+    "require-yield": "warn",
+    "use-isnan": "warn",
+    "valid-typeof": "warn",
+    "oxc/bad-array-method-on-arguments": "warn",
+    "oxc/bad-char-at-comparison": "warn",
+    "oxc/bad-comparison-sequence": "warn",
+    "oxc/bad-min-max-func": "warn",
+    "oxc/bad-object-literal-comparison": "warn",
+    "oxc/bad-replace-all-arg": "warn",
+    "oxc/const-comparisons": "warn",
+    "oxc/double-comparisons": "warn",
+    "oxc/erasing-op": "warn",
+    "oxc/missing-throw": "warn",
+    "oxc/number-arg-out-of-range": "warn",
+    "oxc/only-used-in-recursion": "warn",
+    "oxc/uninvoked-array-callback": "warn",
+    "typescript/await-thenable": "warn",
+    "typescript/no-array-delete": "warn",
+    "typescript/no-base-to-string": "warn",
+    "typescript/no-duplicate-enum-values": "warn",
+    "typescript/no-duplicate-type-constituents": "warn",
+    "typescript/no-extra-non-null-assertion": "warn",
+    "typescript/no-floating-promises": "warn",
+    "typescript/no-for-in-array": "warn",
+    "typescript/no-implied-eval": "warn",
+    "typescript/no-meaningless-void-operator": "warn",
+    "typescript/no-misused-new": "warn",
+    "typescript/no-misused-spread": "warn",
+    "typescript/no-non-null-asserted-optional-chain": "warn",
+    "typescript/no-redundant-type-constituents": "warn",
+    "typescript/no-this-alias": "warn",
+    "typescript/no-unnecessary-parameter-property-assignment": "warn",
+    "typescript/no-unsafe-declaration-merging": "warn",
+    "typescript/no-unsafe-unary-minus": "warn",
+    "typescript/no-useless-empty-export": "warn",
+    "typescript/no-wrapper-object-types": "warn",
+    "typescript/prefer-as-const": "warn",
+    "typescript/require-array-sort-compare": "warn",
+    "typescript/restrict-template-expressions": "warn",
+    "typescript/triple-slash-reference": "warn",
+    "typescript/unbound-method": "warn",
+    "unicorn/no-await-in-promise-methods": "warn",
+    "unicorn/no-empty-file": "warn",
+    "unicorn/no-invalid-fetch-options": "warn",
+    "unicorn/no-invalid-remove-event-listener": "warn",
+    "unicorn/no-new-array": "warn",
+    "unicorn/no-single-promise-in-promise-methods": "warn",
+    "unicorn/no-thenable": "warn",
+    "unicorn/no-unnecessary-await": "warn",
+    "unicorn/no-useless-fallback-in-spread": "warn",
+    "unicorn/no-useless-length-check": "warn",
+    "unicorn/no-useless-spread": "warn",
+    "unicorn/prefer-set-size": "warn",
+    "unicorn/prefer-string-starts-ends-with": "warn",
+    // #endregion
+
+    // #region Overrides
+
+    /*
+      Labels are used to get esbuild to reliably drop debugging constructs.
+      See src/scripts/util/assert.ts
+
+      NOTE: If OxLint ever adds the ability to whitelist certain label names,
+            it'd be nice to update this rule to match it
+    */
+    "no-unused-labels": "off",
+
+    "import/default": "warn",
+    "import/namespace": "warn",
+
+    "jsdoc/check-property-names": "warn",
+    "jsdoc/check-tag-names": "warn",
+    "jsdoc/no-defaults": "warn",
+
+    "promise/no-new-statics": "warn",
+
+    "no-await-in-loop": "warn",
+    "no-useless-call": "error",
+    "oxc/no-accumulating-spread": "warn",
+    "oxc/no-map-spread": "warn",
+    "unicorn/prefer-array-find": "warn",
+    "unicorn/prefer-array-flat-map": "warn",
+
+    "no-empty": "warn",
+    "no-empty-function": "warn",
+    "no-eq-null": "error",
+    "no-iterator": "error",
+    "no-proto": "error",
+    "no-regex-spaces": "warn",
+    "no-var": "error",
+    "no-void": ["warn", { "allowAsStatement": true }],
+
+    "import/no-amd": "warn",
+    "import/no-commonjs": "warn",
+    "import/no-default-export": "warn",
+    "import/no-dynamic-require": ["warn", { "esmodule": true }],
+    "import/no-webpack-loader-syntax": "warn",
+    "import/unambiguous": "warn",
+
+    "jsdoc/check-access": "warn",
+    "jsdoc/empty-tags": "warn",
+    "node/no-new-require": "warn",
+
+    "oxc/bad-bitwise-operator": "warn",
+    "promise/spec-only": "warn",
+
+    "typescript/explicit-function-return-type": [
+      "warn",
+      {
+        "allowExpressions": true,
+        "allowIIFEs": true
+      }
+    ],
+
+    /*
+      Pretty hard to justify nna when REQUIRE_NOT_NULL and ASSERT exist, and allow
+      you to provide an error message, and tell you if your assertion is wrong
+    */
+    "typescript/no-non-null-assertion": "error",
+
+    /*
+      Is known to cause issues with arrays because of variance. Use a disable comment for these scenarios
+    */
+    "typescript/no-explicit-any": ["error", { "ignoreRestArgs": true }],
+
+    "typescript/no-import-type-side-effects": "error",
+    "typescript/no-require-imports": "error",
+    "typescript/promise-function-async": "warn",
+    "typescript/use-unknown-in-catch-callback-variable": "error",
+
+    "unicorn/no-abusive-eslint-disable": "error",
+    "unicorn/no-document-cookie": "error",
+    "unicorn/no-length-as-slice-end": "warn",
+    "unicorn/no-magic-array-flat-depth": "warn",
+    "unicorn/no-useless-error-capture-stack-trace": "warn",
+    "unicorn/prefer-node-protocol": "error",
+
+    "no-extend-native": "error",
+    "no-extra-bind": "error",
+    "no-new": "warn",
+    "no-unneeded-ternary": ["warn", { "defaultAssignment": false }],
+    "no-useless-concat": "warn",
+    "no-useless-constructor": "warn",
+    "preserve-caught-error": "warn",
+    "import/no-absolute-path": "error",
+    "import/no-empty-named-blocks": "error",
+    "import/no-named-as-default": "error",
+    "import/no-named-as-default-member": "error",
+    "import/no-self-import": "error",
+    "promise/no-multiple-resolved": "warn",
+    "promise/no-promise-in-callback": "warn",
+
+    "typescript/no-extraneous-class": "warn",
+    "typescript/no-unnecessary-boolean-literal-compare": "warn",
+    "typescript/no-unnecessary-template-expression": "warn",
+    "typescript/no-unnecessary-type-arguments": "warn",
+    "typescript/no-unnecessary-type-assertion": "warn",
+    "typescript/no-unnecessary-type-constraint": "warn",
+    "typescript/no-unsafe-enum-comparison": "warn",
+    "typescript/no-unsafe-type-assertion": "warn",
+    "unicorn/consistent-function-scoping": "warn",
+    "unicorn/no-accessor-recursion": "warn",
+
+    /*
+      Flags temporary arrays, which is annoying
+      e.g.
+
+      ```ts
+      const x = [1, 2, 3, 4, 5];
+      const y = x.map(e => 2 * e).reverse();
+                                  ^^^^^^^
+                                  flagged
+      ```
+
+      This is a false-positive, because .reverse() is operating
+      on the result of .map(), which is a temporary.
+      Using toReversed() here would actually degrade performance,
+      because it would create yet another copy
+    */
+    // "unicorn/no-array-reverse": "warn",
+
+    /*
+      Same reasoning as above
+    */
+    // "unicorn/no-array-sort": "warn",
+
+    "unicorn/no-instanceof-builtins": ["warn", { "useErrorIsError": true, "strategy": "strict" }],
+
+    "unicorn/prefer-add-event-listener": "warn",
+    "unicorn/require-post-message-target-origin": "warn",
+
+    "accessor-pairs": "warn",
+    "array-callback-return": ["warn", { "allowImplicit": true, "checkForEach": true }],
+    "eqeqeq": "error",
+    "no-array-constructor": "warn",
+    "no-case-declarations": "warn",
+    "no-constructor-return": "warn",
+    "no-else-return": "warn",
+    "no-fallthrough": ["warn", { "commentPattern": null, "reportUnusedFallthroughComment": true }],
+    "no-inner-declarations": "warn",
+    "no-lonely-if": "warn",
+    "no-loop-func": "warn",
+    "no-negated-condition": "warn",
+    "no-new-wrappers": "warn",
+    "no-object-constructor": "warn",
+    "no-throw-literal": "error",
+    "no-prototype-builtins": "error",
+    "no-redeclare": "warn",
+    "no-self-compare": "warn",
+    "no-useless-return": "warn",
+    "radix": "warn",
+    "require-await": "warn",
+    "symbol-description": "warn",
+    "typescript/ban-ts-comment": [
+      "warn",
+      {
+        "ts-check": false,
+        "ts-ignore": true,
+        "ts-nocheck": true,
+        "ts-expect-error": "allow-with-description",
+        "minimumDescriptionLength": 4
+      }
+    ],
+    "typescript/ban-types": "warn",
+    "typescript/no-confusing-void-expression": "warn",
+    "typescript/no-deprecated": "warn",
+    "typescript/no-misused-promises": "warn",
+    "typescript/no-mixed-enums": "warn",
+    "typescript/no-unsafe-argument": "warn",
+    "typescript/no-unsafe-assignment": "warn",
+    "typescript/no-unsafe-call": "warn",
+    "typescript/no-unsafe-function-type": "warn",
+    "typescript/no-unsafe-member-access": "warn",
+    "typescript/no-unsafe-return": "warn",
+    "typescript/only-throw-error": "warn",
+    "typescript/prefer-includes": "warn",
+    "typescript/prefer-nullish-coalescing": "warn",
+    "typescript/prefer-promise-reject-errors": "warn",
+    "typescript/prefer-ts-expect-error": "warn",
+    "typescript/require-await": "warn",
+    "typescript/restrict-plus-operands": "warn",
+    "typescript/return-await": "warn",
+    "typescript/strict-boolean-expressions": "warn",
+    "typescript/switch-exhaustiveness-check": "warn",
+    "unicorn/consistent-assert": "warn",
+    "unicorn/consistent-empty-array-spread": "warn",
+    "unicorn/escape-case": "warn",
+    "unicorn/explicit-length-check": "warn",
+    "unicorn/no-immediate-mutation": "warn",
+    "unicorn/no-instanceof-array": "warn",
+    "unicorn/no-negation-in-equality-check": "warn",
+    "unicorn/no-new-buffer": "warn",
+    "unicorn/no-object-as-default-parameter": "warn",
+    "unicorn/no-static-only-class": "warn",
+    "unicorn/no-typeof-undefined": "warn",
+    "unicorn/no-unnecessary-array-flat-depth": "warn",
+    "unicorn/no-unnecessary-array-splice-count": "warn",
+    "unicorn/no-unnecessary-slice-end": "warn",
+    "unicorn/no-unreadable-iife": "warn",
+    "unicorn/no-useless-promise-resolve-reject": "warn",
+    "unicorn/no-useless-switch-case": "warn",
+    "unicorn/prefer-array-flat": "error",
+    "unicorn/prefer-array-some": "error",
+    "unicorn/prefer-at": "warn",
+    "unicorn/prefer-blob-reading-methods": "warn",
+    "unicorn/prefer-code-point": "warn",
+    "unicorn/prefer-date-now": "warn",
+    "unicorn/prefer-dom-node-dataset": "warn",
+    "unicorn/prefer-math-trunc": "warn",
+    "unicorn/prefer-native-coercion-functions": "warn",
+    "unicorn/prefer-prototype-methods": "warn",
+    "unicorn/prefer-query-selector": "warn",
+    "unicorn/prefer-regexp-test": "warn",
+    "unicorn/prefer-string-replace-all": "warn",
+    "unicorn/prefer-top-level-await": "warn",
+    "unicorn/prefer-type-error": "warn",
+    "unicorn/require-number-to-fixed-digits-argument": "warn",
+
+    "default-case-last": "warn",
+    "default-param-last": "warn",
+    "grouped-accessor-pairs": "warn",
+    "guard-for-in": "warn",
+    "no-duplicate-imports": ["warn", { "allowSeparateTypeImports": true }],
+    "no-implicit-coercion": "warn",
+    "no-label-var": "warn",
+    "no-lone-blocks": "warn",
+    "no-nested-ternary": "warn",
+    "no-new-func": "warn",
+    "no-script-url": "warn",
+    "no-template-curly-in-string": "warn",
+    "no-useless-computed-key": "warn",
+    "operator-assignment": ["warn", "always"],
+    "prefer-numeric-literals": "warn",
+    "prefer-object-has-own": "warn",
+    "prefer-object-spread": "warn",
+    "prefer-promise-reject-errors": "warn",
+    "prefer-rest-params": "warn",
+    "prefer-spread": "warn",
+    "prefer-template": "warn",
+    "promise/avoid-new": "warn",
+    "promise/no-nesting": "warn",
+    "promise/no-return-wrap": "warn",
+    "promise/param-names": "warn",
+
+    "typescript/adjacent-overload-signatures": "warn",
+    "typescript/array-type": ["warn", { "default": "array-simple" }],
+    "typescript/consistent-generic-constructors": "warn",
+    "typescript/consistent-indexed-object-style": ["warn", "record"],
+    "typescript/consistent-type-imports": "warn",
+    "typescript/no-empty-interface": "warn",
+    "typescript/no-inferrable-types": ["warn", { "ignoreParameters": true, "ignoreProperties": true }],
+    "typescript/prefer-reduce-type-parameter": "warn",
+    "typescript/prefer-return-this-type": "warn",
+    "unicorn/consistent-date-clone": "warn",
+    "unicorn/consistent-existence-index-check": "warn",
+    "unicorn/error-message": "warn",
+    "unicorn/no-array-method-this-argument": "warn",
+    "unicorn/no-await-expression-member": "warn",
+    "unicorn/no-console-spaces": "warn",
+    "unicorn/no-useless-collection-argument": "warn",
+    "unicorn/no-zero-fractions": "warn",
+    "unicorn/prefer-array-index-of": "warn",
+    "unicorn/prefer-bigint-literals": "warn",
+    "unicorn/prefer-class-fields": "warn",
+    "unicorn/prefer-classlist-toggle": "warn",
+    "unicorn/prefer-default-parameters": "warn",
+    "unicorn/prefer-includes": "warn",
+    "unicorn/prefer-keyboard-event-key": "warn",
+    "unicorn/prefer-logical-operator-over-ternary": "warn",
+    "unicorn/prefer-modern-dom-apis": "warn",
+    "unicorn/prefer-negative-index": "warn",
+    "unicorn/prefer-object-from-entries": "warn",
+    "unicorn/prefer-response-static-json": "warn",
+    "unicorn/prefer-spread": "warn",
+    "unicorn/prefer-string-trim-start-end": "warn",
+    "unicorn/prefer-structured-clone": "warn",
+    "unicorn/switch-case-braces": ["warn", "always"],
+    "unicorn/throw-new-error": "warn"
+    // #endregion
+  },
+  "settings": {
+    "jsx-a11y": {
+      "polymorphicPropName": null,
+      "components": {},
+      "attributes": {}
+    },
+    "next": {
+      "rootDir": []
+    },
+    "react": {
+      "formComponents": [],
+      "linkComponents": [],
+      "version": null
+    },
+    "jsdoc": {
+      "ignorePrivate": false,
+      "ignoreInternal": false,
+      "ignoreReplacesDocs": true,
+      "overrideReplacesDocs": true,
+      "augmentsExtendsReplacesDocs": false,
+      "implementsReplacesDocs": false,
+      "exemptDestructuredRootsFromChecks": false,
+      "tagNamePreference": {}
+    },
+    "vitest": {
+      "typecheck": false
+    }
+  },
+  "env": {
+    "builtin": true
+  },
+  "globals": {},
+  "ignorePatterns": []
+}
