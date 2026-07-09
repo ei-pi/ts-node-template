@@ -8,17 +8,20 @@
     "build": "node esbuild.js",
     "lint": "oxlint && dprint check",
     "lint:fix": "oxlint --fix && dprint fmt",
-    "lint:ci": "oxlint --max-warnings 0 && dprint check"
+    "lint:ci": "oxlint --max-warnings 0 && dprint check",
+    "test:watch": "vitest",
+    "test": "vitest run"
   },
   "devDependencies": {
     "@types/node": "^25.0.3",
-    "dprint": "^0.51.1",
+    "dprint": "^0.55.1",
     "oxlint": "^1.37.0",
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
   },
   "dependencies": {
-    "esbuild": "^0.27.2",
-    "tsx": "^4.21.0"
+    "esbuild": "^0.28.1",
+    "tsx": "^4.23.0"
   },
-  "packageManager": "pnpm@10.27.0+sha512.72d699da16b1179c14ba9e64dc71c9a40988cbdc65c264cb0e489db7de917f20dcf4d64d8723625f2969ba52d4b7e2a1170682d9ac2a5dcaeaab732b7e16f04a"
+  "packageManager": "pnpm@11.11.0+sha512.4463f65fd80ed80d69bc1d4bf163ee94f605c7380fc318bb5b2ebe15f8cd12d49c51a4d59e951b401e764d3b6ca751cbf51bc50ed7001a6bcb4935e684c34882"
 }
