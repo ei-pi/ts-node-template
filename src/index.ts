@@ -1,3 +1,5 @@
+import { ASSERT } from "./util/assert";
+
 console.log("helo");
 
-export { };
+DEBUG: ASSERT(true);
